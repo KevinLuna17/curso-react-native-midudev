@@ -6,8 +6,6 @@ Metacritic es una aplicacion para poder chequear las reseñas y valoraciones de 
 
 ## Características
 
-### Metacritic app:
-
 - Pendiente definir con el pasar del curso
 
 ## Creación de proyecto
@@ -48,6 +46,27 @@ Instalar dependencia para que las aplicaciones se visualicen bien en referencia 
 Para que rendericen los svg en la aplicacion:
 
     npx expo install react-native-svg
+
+Instalar Nativewind/Tailwind:
+
+    npm install nativewind@2
+    npm install --save-dev --save-exact tailwindcss@3.3.2
+
+Para inicializar la configuración de Tailwind:
+
+    npx tailwindcss init
+
+Configura archivo tailwind.config.js con el contenido de las carpetas y/o archivos que tengas en tu proyecto:
+
+    content: [
+    "./App.{js, jsx, ts, tsx}",
+    "./components/**/*.{js, jsx, ts, tsx}",
+    "./app/**/*.{js, jsx, ts, tsx}",
+    ],
+
+Configura archivo babel.config.js agregandole el plugin de nativewind:
+
+    plugins: ["nativewind/babel"],
 
 ## ✔️ Tecnologías
 
