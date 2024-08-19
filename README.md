@@ -68,6 +68,20 @@ Configura archivo babel.config.js agregandole el plugin de nativewind:
 
     plugins: ["nativewind/babel"],
 
+Para empezar a trabajar con las rutas instalamos las siguientes dependencias:
+
+    npx expo install expo-router react-native-safe-area-context react-native-screens expo-linking expo-constants expo-status-bar
+
+Para configurar expo-router seguir los siguientes pasos:
+
+    1. En el archivo package.json reemplazar la linea de "main" por "main": "expo-router/entry".
+    2. En el archivo app.json tenemos que agregar la linea de codigo "scheme": "nombre_de_la_app" para configurar la app con un enlace profundo.
+    3. Crear la carpeta app y el archivo _layout.js.
+
+Para utilizar iconos instalamos:
+
+    npm install @expo/vector-icons
+
 ## ✔️ Tecnologías
 
 - [React Native + Expo](https://reactnative.dev/)
