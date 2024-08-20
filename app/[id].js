@@ -1,19 +1,54 @@
-import { Link } from "expo-router";
-import { Text, View } from "react-native";
+import { Stack } from "expo-router";
+import { ActivityIndicator, Image, ScrollView, Text, View } from "react-native";
 import { useLocalSearchParams } from "expo-router";
+import { ScreenLayout } from "../components/ScreenLayout";
+import { useEffect, useState } from "react";
+import { getGameDetails } from "../lib/metacritic";
+import { Score } from "../components/Score";
 
 export default function Detail() {
   const { id } = useLocalSearchParams();
+  const [gameInfo, setGameInfo] = useState(null);
+
+  useEffect(() => {
+    if (id) {
+      getGameDetails(id).then(setGameInfo);
+    }
+  }, [id]);
+
   return (
-    <View className="flex-1 justify-center items-center">
+    <ScreenLayout>
+      <Stack.Screen
+        options={{
+          headerStyle: { backgroundColor: "#ffee00" },
+          headerTintColor: "black",
+          headerTitle: "Detalles del juego",
+          headerLeft: () => {},
+          headerRight: () => {},
+        }}
+      />
       <View>
-        <Text className="text-white font-bold text-2xl mb-8">
-          Detalles del juego {id}
-        </Text>
-        <Link href="/" className="text-blue-500">
-          Volver atras
-        </Link>
+        {gameInfo === null ? (
+          <ActivityIndicator color={"#fff"} size={"large"} />
+        ) : (
+          <ScrollView>
+            <View className="justify-center items-center text-center">
+              <Image
+                className="rounded mb-4"
+                source={{ uri: gameInfo.img }}
+                style={{ width: 214, height: 294 }}
+              />
+              <Score score={gameInfo.score} maxScore={100} />
+              <Text className="text-white text-center font-bold text-xl">
+                {gameInfo.title}
+              </Text>
+              <Text className="text-white/70 mt-4 text-left text-base mb-8">
+                {gameInfo.description}
+              </Text>
+            </View>
+          </ScrollView>
+        )}
       </View>
-    </View>
+    </ScreenLayout>
   );
 }
