@@ -4,9 +4,13 @@
 
 Metacritic es una aplicacion para poder chequear las reseñas y valoraciones de algunos juegos, peliculas.
 
-## Características
+## Características de la app
 
-- Pendiente definir con el pasar del curso
+- App creada con Expo.
+- Uso de componentes nativos de react native.
+- Manejo de estados, useEffect, constantes, imagenes, iconos, animaciones, Expo router.
+- Consumo de api.
+- Integracion con tailwind.
 
 ## Creación de proyecto
 
